@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/AROrbitalFloor/Scenes/Calibration/SkullRegistration.unity
+  isLoaded: 1
+  isActive: 1

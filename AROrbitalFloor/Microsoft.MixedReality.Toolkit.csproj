@@ -1,0 +1,1082 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{8424240D-318E-245D-0F23-0310C105050C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Microsoft.MixedReality.Toolkit</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>.</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2018_4_28;UNITY_2018_4;UNITY_2018;UNITY_INCLUDE_TESTS;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_METRO;UNITY_METRO;UNITY_METRO_API;UNITY_WSA;UNITY_WSA_10_0;UNITY_WINRT_10_0;PLATFORM_WINRT;UNITY_WINRT;ENABLE_WINRT_PINVOKE;ENABLE_LAZY_METHOD_CACHING;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;ENABLE_SUBSTANCE;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;ENABLE_AR;PLATFORM_OVERRIDES_APPLICATION_PACKAGE_NAME;ENABLE_MONO;NET_4_6;ENABLE_MANAGED_JOBS;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
+    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>WSAPlayer:21</UnityBuildTarget>
+    <UnityVersion>2018.4.28f1</UnityVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>F:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>F:\Program Files\Unity\Editor\Data\Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\MRTK\Core\AssemblyInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\DocLinkAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\EnumFlagsAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\ExperimentalAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\ExtendsAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\HelpAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\ImplementsAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\MixedRealityControllerAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\MixedRealityDataProviderAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\MixedRealityExtensionServiceAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\MixedRealityServiceInspectorAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\MixedRealityServiceProfileAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\PhysicsLayerAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\PrefabAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\ReadOnlyAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\ScenePickAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\SystemTypeAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\TagPropertyAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Attributes\Vector3RangeAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\BaseMixedRealityProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\BoundarySystem\BoundaryType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\BoundarySystem\Edge.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\BoundarySystem\InscribedRectangle.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\BoundarySystem\MixedRealityBoundaryVisualizationProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\CameraSystem\BaseCameraSettingsProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\CameraSystem\CameraDisplayType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\CameraSystem\MixedRealityCameraProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\CameraSystem\MixedRealityCameraSettingsConfiguration.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\ControllerMappingLibrary.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\DeviceInputType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\GestureInputType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\Headset.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\InputSourceType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\MixedRealityControllerConfigurationFlags.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\MixedRealityControllerMapping.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\MixedRealityControllerMappingProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\MixedRealityControllerVisualizationProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\MixedRealityControllerVisualizationSetting.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\MixedRealityEyeTrackingProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\MixedRealityHandTrackingProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\MixedRealityInteractionMapping.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\SDKType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\SupportedControllerType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Devices\TrackingState.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Diagnostics\MixedRealityDiagnosticsProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\AnimatedCursorData.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\CursorContextEnum.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\CursorStateEnum.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\InputActionEventPair.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\InputActionRuleDigital.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\InputActionRuleDualAxis.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\InputActionRulePoseAxis.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\InputActionRuleQuaternionAxis.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\InputActionRuleSingleAxis.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\InputActionRuleVectorAxis.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\KeywordAndResponse.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\MixedRealityGestureMapping.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\MixedRealityGesturesProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\MixedRealityInputAction.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\MixedRealityInputActionRulesProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\MixedRealityInputActionsProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\MixedRealityInputSystemProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\MixedRealityPointerProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\MixedRealityRaycastHit.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\MixedRealitySpeechCommandsProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\PointerBehavior.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\PointerOption.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\SpeechCommands.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\TouchableEventType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\InputSystem\WindowsGestureSettings.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Lines\DistortionMode.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Lines\InterpolationMode.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Lines\InterpolationType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Lines\LinePointTransformMode.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Lines\LineRotationMode.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Lines\PointDistributionMode.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Lines\StepMode.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\MixedRealityInputDataProviderConfiguration.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\MixedRealityRegisteredServiceProvidersProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\MixedRealityServiceConfiguration.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\MixedRealitySpatialObserverConfiguration.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\MixedRealityToolkitConfigurationProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Physics\ComparableRaycastResult.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Physics\FocusDetails.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Physics\RayStep.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Physics\SceneQueryType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Physics\TeleportSurfaceResult.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SceneSystem\LightingSceneTransitionType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SceneSystem\MixedRealitySceneSystemProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SceneSystem\RuntimeLightingSettings.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SceneSystem\RuntimeRenderSettings.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SceneSystem\RuntimeSunlightSettings.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SceneSystem\SceneActivationToken.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SceneSystem\SceneInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SpatialAwareness\BaseSpatialAwarenessObject.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SpatialAwareness\BaseSpatialAwarenessObserverProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SpatialAwareness\MixedRealitySpatialAwarenessMeshObserverProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SpatialAwareness\MixedRealitySpatialAwarenessSystemProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SpatialAwareness\SpatialAwarenessMeshLevelOfDetail.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SpatialAwareness\SpatialAwarenessMeshObject.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SpatialAwareness\SpatialAwarenessPlanarObject.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SpatialAwareness\SpatialAwarenessSurfaceTypes.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\SpatialAwareness\SpatialMeshDisplayOptions.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\AnimatorParameter.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\ArticulatedHandPose.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\AutoStartBehavior.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\AxisFlags.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\AxisType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\CollationOrder.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\ExperienceScale.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\Handedness.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\ManipulationHandFlags.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\ManipulationProximityFlags.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\MixedRealityCapability.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\MixedRealityPose.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\MixedRealityTransform.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\MovementConstraintType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\OrientationType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\PivotAxis.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\ProcessResult.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\ProfileMenuItemIndices.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\RadialViewReferenceDirection.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\RecognitionConfidenceLevel.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\RotationConstraintType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\ScaleState.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\SceneAssetReferenceAttribute.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\SolverOrientationType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\SupportedApplicationModes.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\SupportedPlatforms.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\SystemType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\TrackedHandJoint.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\TrackedObjectType.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\TransformFlags.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\TypeGrouping.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\Vector3Smoothed.cs" />
+    <Compile Include="Assets\MRTK\Core\Definitions\Utilities\VolumeType.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\Boundary\BoundaryEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\Diagnostics\DiagnosticsEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\GenericBaseEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\Input\BaseInputEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\Input\DictationEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\Input\FocusEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\Input\HandTrackingInputEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\Input\InputEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\Input\MixedRealityPointerEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\Input\SourcePoseEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\Input\SourceStateEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\Input\SpeechEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\PlacementEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\SpatialAwareness\MixedRealitySpatialAwarenessEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\EventDatum\Teleport\TeleportEventData.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\AnimationCurveExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\ArrayExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\AssemblyExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\BoundsExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\CameraExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\CanvasExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\CollectionsExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\Color32Extensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\ComparerExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\ComponentExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\DoubleExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\EventSystemExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\FloatExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\GameObjectExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\HandednessExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\LayerExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\MathfExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\ProcessExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\QuaternionExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\RayExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\ReflectionExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\StringBuilderExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\StringExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\SystemNumericsExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\Texture2DExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\TransformExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\TypeExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\UnityObjectExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Extensions\VectorExtensions.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Audio\IAudioInfluencer.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\BoundarySystem\IMixedRealityBoundaryHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\BoundarySystem\IMixedRealityBoundarySystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\CameraSystem\IMixedRealityCameraSettingsProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\CameraSystem\IMixedRealityCameraSystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Devices\IMixedRealityController.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Devices\IMixedRealityControllerPoseSynchronizer.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Devices\IMixedRealityControllerVisualizer.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Devices\IMixedRealityDictationSystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Devices\IMixedRealityHand.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Devices\IMixedRealityHandJointService.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Devices\IMixedRealityHandVisualizer.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Devices\IMixedRealityInputDeviceManager.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Devices\IMixedRealitySpeechSystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Diagnostics\IMixedRealityDiagnosticsHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Diagnostics\IMixedRealityDiagnosticsSystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\EventSystem\Handlers\IMixedRealityEventHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\EventSystem\IMixedRealityEventSource.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\EventSystem\IMixedRealityEventSystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\IMixedRealityServiceConfiguration.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealityBaseInputHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealityDictationHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealityFocusChangedHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealityFocusHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealityGestureHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealityHandJointHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealityHandMeshHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealityInputActionHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealityInputHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealityPointerHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealitySourcePoseHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealitySourceStateHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealitySpeechHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\Handlers\IMixedRealityTouchHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\ICursorModifier.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IInputActionRule.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityCursor.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityEyeGazeDataProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityEyeGazeProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityEyeSaccadeProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityFocusProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityGazeProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityGazeProviderHeadOverride.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityInputSource.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityInputSystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityMouseDeviceManager.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityMousePointer.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityNearPointer.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityPointer.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityPointerMediator.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityPrimaryPointerSelector.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityRaycastProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityTeleportPointer.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IMixedRealityTouchPointer.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IPointerPreferences.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\InputSystem\IPointerResult.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Physics\IBaseRayStabilizer.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Registrars\IMixedRealityServiceRegistrar.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Rendering\IMaterialInstanceOwner.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\SceneSystem\IMixedRealitySceneSystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\SceneSystem\IMixedRealitySceneSystemEditor.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Services\IMixedRealityCapabilityCheck.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Services\IMixedRealityDataProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Services\IMixedRealityDataProviderAccess.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Services\IMixedRealityExtensionService.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\Services\IMixedRealityService.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\SpatialAwareness\Handlers\IMixedRealitySpatialAwarenessObservationHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\SpatialAwareness\IMixedRealitySpatialAwarenessObject.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\SpatialAwareness\IMixedRealitySpatialAwarenessSystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\SpatialAwareness\Observers\IMixedRealitySpatialAwarenessMeshObserver.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\SpatialAwareness\Observers\IMixedRealitySpatialAwarenessObserver.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\SpatialAwareness\Observers\ISpatialAwarenessPhysicsProperties.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\TeleportSystem\Handlers\IMixedRealityTeleportHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\TeleportSystem\IMixedRealityTeleportHotSpot.cs" />
+    <Compile Include="Assets\MRTK\Core\Interfaces\TeleportSystem\IMixedRealityTeleportSystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\BaseCameraSettingsProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\BaseController.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\BaseGenericInputSource.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\BaseInputDeviceManager.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\BaseSpatialMeshObserver.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\BaseSpatialObserver.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\GenericPointer.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\Hands\ArticulatedHandDefinition.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\Hands\BaseHand.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\Hands\BaseHandVisualizer.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\Hands\HandBounds.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\Hands\HandJointService.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\Hands\HandJointUtils.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\Hands\HandRay\HandRay.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\Hands\HandRay\IHandRay.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\UnityInput\GenericJoystickController.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\UnityInput\MixedRealityMouseInputProfile.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\UnityInput\MouseController.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\UnityInput\MouseDeviceManager.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\UnityInput\UnityJoystickManager.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\UnityInput\UnityTouchController.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\UnityInput\UnityTouchDeviceManager.cs" />
+    <Compile Include="Assets\MRTK\Core\Providers\UnityInput\XboxController.cs" />
+    <Compile Include="Assets\MRTK\Core\Services\BaseBoundarySystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Services\BaseCoreSystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Services\BaseDataProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Services\BaseDataProviderAccessCoreSystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Services\BaseEventSystem.cs" />
+    <Compile Include="Assets\MRTK\Core\Services\BaseExtensionService.cs" />
+    <Compile Include="Assets\MRTK\Core\Services\BaseService.cs" />
+    <Compile Include="Assets\MRTK\Core\Services\MixedRealityToolkit.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\CameraCache.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\CameraEventRouter.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\CameraFOVChecker.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\CoreServices.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\DebugUtilities.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\DeviceUtility.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\EdgeUtilities.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Facades\ServiceFacade.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\FastSimplexNoise.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\GameObjectManagement\GameObjectCreator.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\GameObjectManagement\GameObjectPool.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\GameObjectManagement\GenericPrefabInstanceCreator.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\GameObjectManagement\IGameObjectCreatorListener.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\InspectorFields\InspectorField.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\InspectorFields\InspectorFieldData.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\InspectorFields\InspectorGenericFields.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\InspectorFields\InspectorPropertySettings.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\DataProviders\BaseMixedRealityLineDataProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\DataProviders\BezierDataProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\DataProviders\BezierInertia.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\DataProviders\EllipseLineDataProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\DataProviders\ParabolaConstrainedLineDataProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\DataProviders\ParabolaLineDataProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\DataProviders\ParabolaPhysicalLineDataProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\DataProviders\RectangleLineDataProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\DataProviders\SimpleLineDataProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\DataProviders\SplineDataProvider.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\LineFollower.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\LineUtility.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\Renderers\BaseMixedRealityLineRenderer.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\Renderers\MeshLineRenderer.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\Renderers\MixedRealityLineRenderer.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\Renderers\ParticleSystemLineRenderer.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Lines\Renderers\StripMeshLineRenderer.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\MaintainBorderLightWidth.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\MathUtilities.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Migration\IMigrationHandler.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\MixedRealityPlayspace.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\MixedRealityServiceRegistry.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\OBJWriterUtility.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\BaseRayStabilizer.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\Distorters\Distorter.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\Distorters\DistorterBulge.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\Distorters\DistorterGravity.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\Distorters\DistorterSimplex.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\Distorters\DistorterSphere.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\Distorters\DistorterWiggly.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\GazeStabilizer.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\InterpolationUtilities.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\Interpolator.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\MixedRealityRaycaster.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\RaycastResultComparer.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Physics\VectorRollingStatistics.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\PlatformUtility.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Rendering\DepthBufferRenderer.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Rendering\MaterialInstance.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Scenes\EditorSceneUtils.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Scenes\RuntimeSceneUtils.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\Scenes\SerializedObjectUtils.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\ScriptingUtilities.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\StabilizedRay.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\StandardShader\BaseMeshOutline.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\StandardShader\ClippingBox.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\StandardShader\ClippingPlane.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\StandardShader\ClippingPrimitive.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\StandardShader\ClippingSphere.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\StandardShader\HoverLight.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\StandardShader\MeshOutline.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\StandardShader\MeshOutlineHierarchy.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\StandardShader\MeshSmoother.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\StandardShader\ProximityLight.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\StandardShader\StandardShaderUtility.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\TypeCacheUtility.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\UWPCapabilityUtility.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WebRequestRest\Response.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WebRequestRest\Rest.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsApiChecker.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\ActivePowerSchemeInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\AdapterInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\ApplicationInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\AvailableWiFiNetworks.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\BatteryInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\DeviceInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\DeviceOsInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\DevicePortalConnections.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\DHCPInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\FileInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\FileList.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\InstalledApps.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\InstallStatus.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\InterfaceInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\IpAddressInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\IpConfigInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\MachineName.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\NetworkInterfaces.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\NetworkProfileInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\PowerStateInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\ProcessInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\ProcessList.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DataStructures\WirelessNetworkInfo.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\WindowsDevicePortal\DevicePortal.cs" />
+    <Compile Include="Assets\MRTK\Core\Utilities\XRSubsystemHelpers.cs" />
+    <None Include="Assets\MRTK\Core\License.txt" />
+    <None Include="Assets\MRTK\Core\Version.txt" />
+    <None Include="Assets\MRTK\Core\WhereToStart.txt" />
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.BaselibModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.BaselibModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.FileSystemHttpModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.FileSystemHttpModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.HotReloadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.LocalizationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ProfilerModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.ProfilerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTrackingModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.SpatialTrackingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.StreamingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StyleSheetsModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.StyleSheetsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.SubstanceModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.TLSModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.TextCoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TimelineModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.TimelineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UNETModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.UNETModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.UmbraModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.UnityTestProtocolModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.VFXModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/Tools/UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Locator">
+      <HintPath>F:/Program Files/Unity/Editor/Data/Managed/Unity.Locator.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TestRunner">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Timeline">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="Vuforia.UnityExtensions.Editor">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Editor/Vuforia.UnityExtensions.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Vuforia.UnityExtensions">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.GoogleAudioSpatializer">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GoogleAudioSpatializer">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>F:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WSA.Extensions">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.WSA.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>F:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>F:/UnityProjects/AROrbitalFloor/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+      <HintPath>F:/UnityProjects/AROrbitalFloor/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Editor">
+      <HintPath>F:/UnityProjects/AROrbitalFloor/Library/PackageCache/com.unity.analytics@3.2.3/Editor/Unity.Analytics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+      <HintPath>F:/UnityProjects/AROrbitalFloor/Library/PackageCache/com.unity.analytics@3.2.3/Editor/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>F:/UnityProjects/AROrbitalFloor/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Runtime.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Microsoft.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/netstandard.dll</HintPath>
+    </Reference>
+    <Reference Include="System.AppContext">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.AppContext.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Concurrent">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Collections.Concurrent.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.NonGeneric">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Collections.NonGeneric.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Specialized">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Collections.Specialized.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.EventBasedAsync">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.EventBasedAsync.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Primitives">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.TypeConverter">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.TypeConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Console">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Common">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Data.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Contracts">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Debug">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.Debug.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.FileVersionInfo">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.FileVersionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Process">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.Process.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.StackTrace">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.StackTrace.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.TextWriterTraceListener">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.TextWriterTraceListener.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tools">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.TraceSource">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.TraceSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Primitives">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Drawing.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Dynamic.Runtime">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Dynamic.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Globalization.Calendars.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Globalization">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Globalization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Globalization.Extensions">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Globalization.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression.ZipFile">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.Compression.ZipFile.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.DriveInfo">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.FileSystem.DriveInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Watcher">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.FileSystem.Watcher.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.IsolatedStorage">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.IsolatedStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.MemoryMappedFiles">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.MemoryMappedFiles.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipes">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.Pipes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.UnmanagedMemoryStream">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.UnmanagedMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq.Expressions">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Linq.Expressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq.Parallel">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Linq.Parallel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq.Queryable">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Linq.Queryable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Rtc">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Http.Rtc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.NameResolution">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.NameResolution.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.NetworkInformation">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.NetworkInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Ping">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Ping.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Primitives">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Requests">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Requests.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Security">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Sockets">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Sockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.WebHeaderCollection">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.WebHeaderCollection.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.WebSockets.Client">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.WebSockets.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.WebSockets">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.WebSockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ObjectModel">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Emit">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Emit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Emit.ILGeneration">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Emit.ILGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Emit.Lightweight">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Emit.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Extensions">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Primitives">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Resources.Reader">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Resources.Reader.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Resources.ResourceManager">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Resources.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Resources.Writer">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Resources.Writer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.VisualC">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.CompilerServices.VisualC.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Handles">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Handles.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.InteropServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.WindowsRuntime">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Numerics">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Serialization.Formatters.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Json">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Serialization.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Primitives">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Serialization.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Xml">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Serialization.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Claims">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Claims.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Csp">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.Csp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Principal.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.SecureString">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.SecureString.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Duplex">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.Duplex.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Http">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.NetTcp">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.NetTcp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Primitives">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Security">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Text.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.Extensions">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Text.Encoding.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Text.RegularExpressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Overlapped">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Overlapped.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Parallel">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Tasks.Parallel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Thread">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Thread.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.ThreadPool">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.ThreadPool.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Timer">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Timer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.ReaderWriter">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.ReaderWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XDocument">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XmlDocument">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XmlDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XmlSerializer">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XmlSerializer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath.XDocument">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityScript">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/UnityScript.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityScript.Lang">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/UnityScript.Lang.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang">
+      <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Async.csproj">
+      <Project>{DED81666-C680-40FE-8F0A-D81E6BD10227}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Async</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Editor.Utilities.csproj">
+      <Project>{2B939C2F-2309-61D7-5DBA-F2E1996DF8A9}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Editor.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
