@@ -131,47 +131,112 @@ namespace AROF
 
         }
 
-        public Quaternion RegThreePoint(Vector3[] A, Vector3[] B)
+        public Tuple<float[][], float[]> Register(float[][] A, float[][] B)
         {
-            // http://www.cs.hunter.cuny.edu/~ioannis/registerpts_allen_notes.pdf
-            Quaternion R = Quaternion.identity;
-            Vector3 p = new Vector3(0.0f, 0.0f, 0.0f);
+            int n = 3;        // Length of Point Sets
 
-            float[][] RL = GetZero();
-            float[][] RR = GetZero();
-            Vector3[] basL = CreateBasisThreePoint(A);
-            Vector3[] basR = CreateBasisThreePoint(B);
-            for (int i = 0; i < 3; i++)
+            // Calculate centroids of S and M point sets
+            float[] aCentroid = new float[3] { 0.0f, 0.0f, 0.0f };
+            float[] bCentroid = new float[3] { 0.0f, 0.0f, 0.0f };
+
+            for (int i = 0; i < n; i++)
             {
-                RL[i] = new float[3] { basL[i].x, basL[i].y, basL[i].z };
-                RR[i] = new float[3] { basR[i].x, basR[i].y, basR[i].z };
+                aCentroid[0] += A[i][0];
+                aCentroid[1] += A[i][1];
+                aCentroid[2] += A[i][2];
+                bCentroid[0] += B[i][0];
+                bCentroid[1] += B[i][1];
+                bCentroid[2] += B[i][2];
+            }
+            aCentroid[0] = (1.0f / n) * aCentroid[0];
+            aCentroid[1] = (1.0f / n) * aCentroid[1];
+            aCentroid[2] = (1.0f / n) * aCentroid[2];
+            bCentroid[0] = (1.0f / n) * bCentroid[0];
+            bCentroid[1] = (1.0f / n) * bCentroid[1];
+            bCentroid[2] = (1.0f / n) * bCentroid[2];
+
+            // Point Deviations from centroid
+            float[][] aTilda = GetZero(n);
+            float[][] bTilda = GetZero(n);
+
+            for (int i = 0; i < n; i++)
+            {
+                aTilda[i][0] = A[i][0] - aCentroid[0];
+                bTilda[i][0] = B[i][0] - bCentroid[0];
+
+                aTilda[i][1] = A[i][1] - aCentroid[1];
+                bTilda[i][1] = B[i][1] - bCentroid[1];
+
+                aTilda[i][2] = A[i][2] - aCentroid[2];
+                bTilda[i][2] = B[i][2] - bCentroid[2];
             }
 
-            RL = Transp(RL);
+            //Find R that minimizes SSE
+            // H Matrix for Singular Value Decomposition
+            float[][] H = GetZero();
+            int x = 0; int y = 1; int z = 2;
 
-            float[][] RMat = Mult(RL, RR);
-            R = RMat2Quat(RMat);
+            // Build H
+            for (int i = 0; i < n; i++)
+            {
+                H[0][0] += aTilda[i][x] * bTilda[i][x];
+                H[0][1] += aTilda[i][x] * bTilda[i][y];
+                H[0][2] += aTilda[i][x] * bTilda[i][z];
 
-            // p = A[0] - R * B[0];
+                H[1][0] += aTilda[i][y] * bTilda[i][x];
+                H[1][1] += aTilda[i][y] * bTilda[i][y];
+                H[1][2] += aTilda[i][y] * bTilda[i][z];
 
-            return R;
+                H[2][0] += aTilda[i][z] * bTilda[i][x];
+                H[2][1] += aTilda[i][z] * bTilda[i][y];
+                H[2][2] += aTilda[i][z] * bTilda[i][z];
+            }
+
+            // SVD Decomposition
+            Tuple<float[][], float[][], float[][]> USV = SVDSim3By3(H);
+            // Calculate Rotation Matrix R
+            float[][] R = Mult(USV.Item3, Transp(USV.Item1));
+
+            // Use Section IV of K. Arun et. al to change mirror and make valid matrix
+            // If this does not work, this algorithm cannot be used
+            if (Det(R) < 0)
+            {
+                float[][] V = USV.Item3;
+                V[0][0] = -V[0][0]; V[0][1] = -V[0][1]; V[0][2] = -V[0][2];
+                V[1][0] = -V[1][0]; V[1][1] = -V[1][1]; V[1][2] = -V[1][2];
+                V[2][0] = -V[2][0]; V[2][1] = -V[2][1]; V[2][2] = -V[2][2];
+
+                R = Mult(V, Transp(USV.Item1));
+            }
+
+            // Find translation vector - Compute p, Translation
+            // p = b_centroid - R * a_centroid;
+            float[] p;
+            p = new float[3] { 0.0f, 0.0f, 0.0f };
+            p[0] = bCentroid[0] - (
+                R[0][0] * aCentroid[0] + R[0][1] * aCentroid[1] + R[0][2] * aCentroid[2]);
+            p[1] = bCentroid[1] - (
+                R[1][0] * aCentroid[0] + R[1][1] * aCentroid[1] + R[1][2] * aCentroid[2]);
+            p[2] = bCentroid[2] - (
+                R[2][0] * aCentroid[0] + R[2][1] * aCentroid[1] + R[2][2] * aCentroid[2]);
+
+            return Tuple.Create(R, p);
         }
 
-        public Quaternion RMat2Quat(float[][] RMat)
+        public float Det(float[][] R)
         {
-            Vector3 column3;
-            Vector3 column2;
-            column3 = new Vector3(RMat[0][2], RMat[1][2], RMat[2][2]);
-            column2 = new Vector3(RMat[0][1], RMat[1][1], RMat[2][1]);
-            return Quaternion.LookRotation(column3, column2);
+            float det = 0.0f;
+            det = R[0][2] * (R[1][0] * R[2][1] - R[1][1] * R[2][0]) - R[0][1] * (R[1][0] * R[2][2] - R[1][2] * R[2][0]) + R[0][0] * (R[1][1] * R[2][2] - R[1][2] * R[2][1]);
+            return det;
         }
 
-        public Vector3[] CreateBasisThreePoint(Vector3[] A)
+        public float[][] GetEye()
         {
-            Vector3 x = Vector3.Normalize(A[1] - A[0]);
-            Vector3 y = Vector3.Normalize((A[2] - A[0]) - Vector3.Dot((A[2] - A[0]), x) * x);
-            Vector3 z = Vector3.Cross(x, y);
-            return (new Vector3[3] { x, y, z });
+            float[][] I = new float[3][];
+            I[0] = new float[3] { 1.0f, 0.0f, 0.0f };
+            I[1] = new float[3] { 0.0f, 1.0f, 0.0f };
+            I[2] = new float[3] { 0.0f, 0.0f, 1.0f };
+            return I;
         }
 
         public float[][] GetZero()
@@ -181,6 +246,25 @@ namespace AROF
             I[1] = new float[3] { 0.0f, 0.0f, 0.0f };
             I[2] = new float[3] { 0.0f, 0.0f, 0.0f };
             return I;
+        }
+
+        public float[][] GetZero(int n)
+        {
+            float[][] I = new float[n][];
+            for (int i = 0; i < n; i++)
+            {
+                I[i] = new float[3] { 0.0f, 0.0f, 0.0f };
+            }
+            return I;
+        }
+
+        public float[][] GetDiag(float[] v)
+        {
+            float[][] D = GetZero();
+            D[0][0] = v[0];
+            D[1][1] = v[1];
+            D[2][2] = v[2];
+            return D;
         }
 
         public float[][] Mult(float[][] X, float[][] Y)
@@ -204,6 +288,112 @@ namespace AROF
             return A;
         }
 
+        public Tuple<float[][], float[][]> QRSim3By3(float[][] A)
+        {
+            float[][] Q = GetZero();
+            float[][] R = GetZero();
+
+            float[][] X = GetZero();
+            float[][] Y = GetZero();
+            float[][] K = GetEye();
+
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    X[i][j] = A[i][j];
+
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    Y[i][j] = A[i][j];
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    K[j][i] = (X[0][i] * Y[0][j] + X[1][i] * Y[1][j] + X[2][i] * Y[2][j]) / (Y[0][j] * Y[0][j] + Y[1][j] * Y[1][j] + Y[2][j] * Y[2][j]);
+                    Y[0][i] = Y[0][i] - K[j][i] * Y[0][j];
+                    Y[1][i] = Y[1][i] - K[j][i] * Y[1][j];
+                    Y[2][i] = Y[2][i] - K[j][i] * Y[2][j];
+                }
+            }
+
+            float[] vecY = new float[3] { 0.0f, 0.0f, 0.0f };
+
+            for (int i = 0; i < 3; i++)
+            {
+                float n = (float)Math.Sqrt(Y[0][i] * Y[0][i] + Y[1][i] * Y[1][i] + Y[2][i] * Y[2][i]);
+                Q[0][i] = Y[0][i] / n;
+                Q[1][i] = Y[1][i] / n;
+                Q[2][i] = Y[2][i] / n;
+                vecY[i] = n;
+            }
+
+            float[][] diagY = GetDiag(vecY);
+            R = Mult(diagY, K);
+
+            return Tuple.Create(Q, R);
+        }
+
+        public Tuple<float[][], float[][], float[][]> SVDSim3By3(float[][] A)
+        {
+            // Editted from the matlab code: Faiz Khan
+            // https://github.com/Sable/mcbench-benchmarks/blob/master/12674-simple-svd/svdsim.m
+
+            // If needed, change the "3" to a variable. This method does 3by3 just for simplicity
+            float[][] U = new float[3][];
+            float[][] S = new float[3][];
+            float[][] V = new float[3][];
+            float[][] Q = new float[3][];
+
+            float tol = 2.2204E-16f * 1024; // eps floating-point relative accuracy 
+            int loopmax = 300;
+            int loopcount = 0;
+
+            U = GetEye();
+            V = GetEye();
+            S = Transp(A);
+
+            float err = float.MaxValue;
+
+            while (err > tol && loopcount < loopmax)
+            {
+                Tuple<float[][], float[][]> tulp = QRSim3By3(Transp(S));
+                Q = tulp.Item1; S = tulp.Item2;
+                U = Mult(U, Q);
+                tulp = QRSim3By3(Transp(S));
+                Q = tulp.Item1; S = tulp.Item2;
+                V = Mult(V, Q);
+
+                // e = triu(S,1)
+                float[][] e = GetZero();
+                e[0][1] = S[0][1];
+                e[0][2] = S[0][2];
+                e[1][2] = S[1][2];
+
+                float E = (float)Math.Sqrt(e[0][1] * e[0][1] + e[0][2] * e[0][2] + e[1][2] * e[1][2]);
+                float F = (float)Math.Sqrt(S[0][0] * S[0][0] + S[1][1] * S[1][1] + S[2][2] * S[2][2]);
+
+                if (F == 0)
+                    F = 1;
+                err = E / F;
+                loopcount++;
+            }
+
+            float[] SS = { S[0][0], S[1][1], S[2][2] };
+            for (int i = 0; i < 3; i++)
+            {
+                float SSi = Math.Abs(SS[i]);
+                S[i][i] = SSi;
+                if (SS[i] < 0)
+                {
+                    U[0][i] = -U[0][i];
+                    U[1][i] = -U[1][i];
+                    U[2][i] = -U[2][i];
+                }
+            }
+
+            return Tuple.Create(U, S, V);
+        }
+
         public float DistanceMapping(float dist) // to account for more distance in the center
         {
             if (dist > 0.08f)
@@ -216,7 +406,51 @@ namespace AROF
                 return -(0.096f - 15.0f * (dist - 0.08f) * (dist - 0.08f));
         }
 
+        public Quaternion RMat2Quat(float[][] RMat)
+        {
+            Vector3 column3;
+            Vector3 column2;
+            column3 = new Vector3(RMat[0][2], RMat[1][2], RMat[2][2]);
+            column2 = new Vector3(RMat[0][1], RMat[1][1], RMat[2][1]);
+            return Quaternion.LookRotation(column3, column2);
+        }
+
+        //public Quaternion RegThreePoint(Vector3[] A, Vector3[] B) // Works in some cases, does not work well
+        //{
+        //    // http://www.cs.hunter.cuny.edu/~ioannis/registerpts_allen_notes.pdf
+        //    Quaternion R = Quaternion.identity;
+        //    Vector3 p = new Vector3(0.0f, 0.0f, 0.0f);
+
+        //    float[][] RL = GetZero();
+        //    float[][] RR = GetZero();
+        //    Vector3[] basL = CreateBasisThreePoint(A);
+        //    Vector3[] basR = CreateBasisThreePoint(B);
+        //    for (int i = 0; i < 3; i++)
+        //    {
+        //        RL[i] = new float[3] { basL[i].x, basL[i].y, basL[i].z };
+        //        RR[i] = new float[3] { basR[i].x, basR[i].y, basR[i].z };
+        //    }
+
+        //    RL = Transp(RL);
+
+        //    float[][] RMat = Mult(RL, RR);
+        //    R = RMat2Quat(RMat);
+
+        //    // p = A[0] - R * B[0];
+
+        //    return R;
+        //}
+
+        //public Vector3[] CreateBasisThreePoint(Vector3[] A)
+        //{
+        //    Vector3 x = Vector3.Normalize(A[1] - A[0]);
+        //    Vector3 y = Vector3.Normalize(Vector3.Normalize((A[2] - A[0]) - Vector3.Dot((A[2] - A[0]), x) * x));
+        //    Vector3 z = Vector3.Normalize(Vector3.Cross(x, y));
+        //    return (new Vector3[3] { x, y, z });
+        //}
+
         // Update is called once per frame
+
         void Update()
         {
             if (navigateStart)
@@ -283,16 +517,46 @@ namespace AROF
                     diffAve.y = diffAve.y / features.Length;
                     diffAve.z = diffAve.z / features.Length;
                     Vector3 finalPos = diffAve;
+                    DataHandler.d.finalPos = finalPos;
                     finalPos.x = DistanceMapping(diffAve.x);
                     finalPos.y = DistanceMapping(diffAve.y);
                     finalPos.z = DistanceMapping(diffAve.z);
 
                     alignIndicator.transform.localPosition = finalPos;
 
-                    Quaternion diffPose = RegThreePoint(featurePlannedPos, S_p_d);
-                    alignIndicator.transform.localRotation = diffPose;
+
+                    float[][] S_p_dFloat = GetZero(3);
+                    float[][] featurePlannedPosFloat = GetZero(3);
+                    for(int i=0;i< features.Length; i++)
+                    {
+                        S_p_dFloat[i][0] = S_p_d[i].x;
+                        S_p_dFloat[i][1] = S_p_d[i].y;
+                        S_p_dFloat[i][2] = S_p_d[i].z;
+                        featurePlannedPosFloat[i][0] = featurePlannedPos[i].x;
+                        featurePlannedPosFloat[i][1] = featurePlannedPos[i].y;
+                        featurePlannedPosFloat[i][2] = featurePlannedPos[i].z;
+                    }
+                    Tuple<float[][], float[]> diffPose = Register(S_p_dFloat, featurePlannedPosFloat);
+                    Quaternion diffPoseR = RMat2Quat(diffPose.Item1);
+                    DataHandler.d.diffPoseR = diffPoseR;
+                    alignIndicator.transform.localRotation = diffPoseR;
 
                 }
+
+                float distToTarget = 1000.0f * Mathf.Sqrt(
+                    DataHandler.d.finalPos.x * DataHandler.d.finalPos.x +
+                    DataHandler.d.finalPos.y * DataHandler.d.finalPos.y +
+                    DataHandler.d.finalPos.z * DataHandler.d.finalPos.z
+                    );
+                if (distToTarget > 30.0f)
+                    distToTarget = 30.0f;
+                GameObject alignCenter1 = GameObject.FindWithTag("alignCenter1");
+                GameObject alignCenter2 = GameObject.FindWithTag("alignCenter2");
+                GameObject alignCenter3 = GameObject.FindWithTag("alignCenter3");
+                alignCenter1.GetComponent<Renderer>().material.SetColor("_Color", Color.Lerp(Color.green, Color.red, distToTarget/30.0f));
+                alignCenter2.GetComponent<Renderer>().material.SetColor("_Color", Color.Lerp(Color.green, Color.red, distToTarget / 80.0f));
+                alignCenter3.GetComponent<Renderer>().material.SetColor("_Color", Color.Lerp(Color.green, Color.red, distToTarget / 80.0f));
+
             }
 
         }

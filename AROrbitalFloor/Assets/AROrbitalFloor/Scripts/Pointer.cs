@@ -114,10 +114,10 @@ namespace AROF
             float[][] A = pointCloudModel;
             float[][] B = pointCloudDig;
             regResult = Register(A, B);
-            Debug.Log("" + regResult.Item1[0][0] + " " + regResult.Item1[0][1] + " " + regResult.Item1[0][2]);
-            Debug.Log("" + regResult.Item1[1][0] + " " + regResult.Item1[1][1] + " " + regResult.Item1[1][2]);
-            Debug.Log("" + regResult.Item1[2][0] + " " + regResult.Item1[2][1] + " " + regResult.Item1[2][2]);
-            Debug.Log("" + regResult.Item2[0] + " " + regResult.Item2[1] + " " + regResult.Item2[2]);
+            //Debug.Log("" + regResult.Item1[0][0] + " " + regResult.Item1[0][1] + " " + regResult.Item1[0][2]);
+            //Debug.Log("" + regResult.Item1[1][0] + " " + regResult.Item1[1][1] + " " + regResult.Item1[1][2]);
+            //Debug.Log("" + regResult.Item1[2][0] + " " + regResult.Item1[2][1] + " " + regResult.Item1[2][2]);
+            //Debug.Log("" + regResult.Item2[0] + " " + regResult.Item2[1] + " " + regResult.Item2[2]);
             SaveRegisterDataToHandler();
             DataHandler.d.isRegistered = true;
 
@@ -128,18 +128,18 @@ namespace AROF
             if (SceneManager.GetActiveScene().name == "SkullRegistration")
             {
                 SaveRegisterDataToHandler();
-                Debug.Log("Registration Saved");
+                //Debug.Log("Registration Saved");
                 DataHandler.d.isSavedReg = true;
             }
             else if (SceneManager.GetActiveScene().name == "SinglePointNav")
             {
                 SaveFeatureDataToHandler();
-                Debug.Log("Single feature point Saved");
+                //Debug.Log("Single feature point Saved");
             }
             else if (SceneManager.GetActiveScene().name == "FeaturePointsNav")
             {
                 SaveFeaturesDataToHandler();
-                Debug.Log("Feature points Saved");
+                //Debug.Log("Feature points Saved");
             }
         }
 
@@ -183,7 +183,7 @@ namespace AROF
             pointCloudDig[currDigIndex % 7][1] = currentDig.y;
             pointCloudDig[currDigIndex % 7][2] = currentDig.z;
             currDigIndex += 1;
-            Debug.Log("" + currentDig[0] + " " + currentDig[1] + " " + currentDig[2]);
+            //Debug.Log("" + currentDig[0] + " " + currentDig[1] + " " + currentDig[2]);
             DataHandler.d.numOfFidCollected = currDigIndex;
        
         }
@@ -193,7 +193,7 @@ namespace AROF
             GameObject reference = GameObject.FindWithTag("markerHemostat");
             Vector3 currentDig = Digitize(reference);
             pointFeature = new float[3] { currentDig.x, currentDig.y, currentDig.z};
-            Debug.Log("" + pointFeature[0] + " " + pointFeature[1] + " " + pointFeature[2]);
+            //Debug.Log("" + pointFeature[0] + " " + pointFeature[1] + " " + pointFeature[2]);
         }
 
         public void FeaturesDigitize()
@@ -205,7 +205,7 @@ namespace AROF
             pointFeatures[currDigIndex % 3][1] = currentDig.y;
             pointFeatures[currDigIndex % 3][2] = currentDig.z;
             currDigIndex += 1;
-            Debug.Log("" + currentDig[0] + " " + currentDig[1] + " " + currentDig[2]);
+            //Debug.Log("" + currentDig[0] + " " + currentDig[1] + " " + currentDig[2]);
 
         }
 

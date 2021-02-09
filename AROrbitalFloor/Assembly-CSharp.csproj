@@ -87,6 +87,7 @@
     <None Include="Assets\MRTK\Providers\License.txt" />
     <None Include="Assets\Vuforia\Shaders\VuforiaVideoBackground.cginc" />
     <None Include="Assets\Vuforia\Shaders\DepthMask.shader" />
+    <None Include="Assets\MixedRealityToolkit.Generated\link.xml" />
     <None Include="Assets\Vuforia\Databases\Emulator\VuforiaEmulator.xml" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />

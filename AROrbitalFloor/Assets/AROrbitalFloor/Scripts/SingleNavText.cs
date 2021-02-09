@@ -26,10 +26,15 @@ namespace AROF
             }
             if (DataHandler.d.startNavigate)
             {
-                txt.text = "Distances to target: (mm)\nx " 
+                txt.text = "Distances to target along axes: (mm)\nx " 
                     + (1000.0f * DataHandler.d.finalPos.x).ToString("F2") + "\ny "
                     + (1000.0f * DataHandler.d.finalPos.y).ToString("F2") + "\nz "
-                    + (1000.0f * DataHandler.d.finalPos.z).ToString("F2");
+                    + (1000.0f * DataHandler.d.finalPos.z).ToString("F2") + "\n" +
+                    "Distance to target: (mm) " + (1000.0f * Mathf.Sqrt(
+                    DataHandler.d.finalPos.x * DataHandler.d.finalPos.x +
+                    DataHandler.d.finalPos.y * DataHandler.d.finalPos.y +
+                    DataHandler.d.finalPos.z * DataHandler.d.finalPos.z
+                    )).ToString("F2");
             }
 
         }

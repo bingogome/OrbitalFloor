@@ -16,6 +16,7 @@ namespace AROF
         public float[][] pointFeatures = new float[3][]; // points coordinates of the point features (on implant) wrt implant marker
         public float[] pointFeaturePlanned; // point coordinate of the planned feature (on skull) wrt skull model origin
         public float[][] pointFeaturesPlanned = new float[3][]; // points coordinates of the planned features (on skull) wrt skull model origin
+        public Quaternion diffPoseR; // orientation error of the multiple points navigation
 
         public int numOfFidCollected;
         public bool isRegistered = false;

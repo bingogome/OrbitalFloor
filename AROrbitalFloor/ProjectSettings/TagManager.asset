@@ -15,6 +15,9 @@ TagManager:
   - pointFeatures1
   - pointFeatures2
   - pointFeatures3
+  - alignCenter1
+  - alignCenter2
+  - alignCenter3
   layers:
   - Default
   - TransparentFX
