@@ -415,6 +415,22 @@ namespace AROF
             return Quaternion.LookRotation(column3, column2);
         }
 
+        public float[] NormalTo3Points(float[] a, float[] b, float[] c)
+        {
+            float[] n = new float[3] { 0.0f, 0.0f, 0.0f };
+            float[] ab = new float[3] { 0.0f, 0.0f, 0.0f };
+            float[] ac = new float[3] { 0.0f, 0.0f, 0.0f };
+            for(int i = 0; i < 3; i++)
+            {
+                ab[i] = b[i] - a[i];
+                ac[i] = c[i] - a[i];
+            }
+            n[0] = ab[1] * ac[2] - ab[2] * ac[1];
+            n[1] = -(ab[0] * ac[2] - ab[2] * ac[0]);
+            n[2] = ab[0] * ac[1] - ab[1] * ac[0];
+            return n;
+        }
+
         //public Quaternion RegThreePoint(Vector3[] A, Vector3[] B) // Works in some cases, does not work well
         //{
         //    // http://www.cs.hunter.cuny.edu/~ioannis/registerpts_allen_notes.pdf
@@ -536,9 +552,15 @@ namespace AROF
                         featurePlannedPosFloat[i][1] = featurePlannedPos[i].y;
                         featurePlannedPosFloat[i][2] = featurePlannedPos[i].z;
                     }
+
+                    // get orientation difference
                     Tuple<float[][], float[]> diffPose = Register(S_p_dFloat, featurePlannedPosFloat);
                     Quaternion diffPoseR = RMat2Quat(diffPose.Item1);
                     DataHandler.d.diffPoseR = diffPoseR;
+
+                    float[] normVec1 = NormalTo3Points(S_p_dFloat[0], S_p_dFloat[1], S_p_dFloat[2]);
+                    float[] normVec2 = NormalTo3Points(featurePlannedPosFloat[0], featurePlannedPosFloat[1], featurePlannedPosFloat[2]);
+
                     alignIndicator.transform.localRotation = diffPoseR;
 
                 }

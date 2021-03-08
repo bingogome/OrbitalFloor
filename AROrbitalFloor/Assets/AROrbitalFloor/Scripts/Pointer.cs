@@ -20,14 +20,21 @@ namespace AROF
 
         private float[] pointFeaturePlanned;
         private float[][] pointFeaturesPlanned = new float[3][];
+        private float[] targetTREpoint;
 
         Tuple<float[][], float[]> regResult;
+        Tuple<float[][], float[]> regInv;
 
         int currDigIndex;
 
         // Start is called before the first frame update
         void Start()
         {
+            if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE")
+            {
+                pointCloudModel = new float[6][];
+                pointCloudDig = new float[6][];
+            }
             // Debug.Log(SceneManager.GetActiveScene().name== "SkullRegistration");
             keywordActions.Add("digitize", Digitize);
             keywordActions.Add("register", Register);
@@ -45,7 +52,8 @@ namespace AROF
             pointCloudModel[3] = new float[] { 1.14525f / 1000.0f, -60.4037f / 1000.0f, 191.706f / 1000.0f };
             pointCloudModel[4] = new float[] { 1.32943f / 1000.0f, -175.998f / 1000.0f, 211.543f / 1000.0f };
             pointCloudModel[5] = new float[] { -59.9893f / 1000.0f, -109.185f / 1000.0f, 171.305f / 1000.0f };
-            pointCloudModel[6] = new float[] { -53.9599f / 1000.0f, -117.288f / 1000.0f, 120.412f / 1000.0f };
+            if (SceneManager.GetActiveScene().name != "SkullRegistrationTRE")
+                pointCloudModel[6] = new float[] { -53.9599f / 1000.0f, -117.288f / 1000.0f, 120.412f / 1000.0f };
 
             pointFeaturePlanned = new float[] { 29.281f / 1000.0f, -77.8222f / 1000.0f, 114.428f / 1000.0f };
             pointFeaturesPlanned[0] = new float[] { 20.4428f / 1000.0f, -89.0086f / 1000.0f, 120.142f / 1000.0f };
@@ -54,10 +62,16 @@ namespace AROF
 
             currDigIndex = 0;
 
-            pointCloudDig = GetZero(7);
+            if (SceneManager.GetActiveScene().name != "SkullRegistrationTRE")
+                pointCloudDig = GetZero(7);
+            else
+                pointCloudDig = GetZero(6);
             pointFeatures = GetZero(3);
 
-
+            if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE")
+                targetTREpoint = new float[] { -53.9599f / 1000.0f, -117.288f / 1000.0f, 120.412f / 1000.0f };
+            else
+                targetTREpoint = new float[] { 28.8796f / 1000.0f, -81.6048f / 1000.0f, 115.405f / 1000.0f };
 
             // test svd
             //float[][] A = GetZero();
@@ -91,6 +105,11 @@ namespace AROF
             {
                 FiducialDigitize();
             }
+            else if ((SceneManager.GetActiveScene().name == "SkullRegistrationTRE") || 
+                (SceneManager.GetActiveScene().name == "SkullRegistrationTREFeature"))
+            {
+                FiducialDigitize();
+            }
             else if(SceneManager.GetActiveScene().name == "SinglePointNav")
             {
                 FeatureDigitize();
@@ -120,7 +139,9 @@ namespace AROF
             //Debug.Log("" + regResult.Item2[0] + " " + regResult.Item2[1] + " " + regResult.Item2[2]);
             SaveRegisterDataToHandler();
             DataHandler.d.isRegistered = true;
-
+            if ((SceneManager.GetActiveScene().name == "SkullRegistrationTRE") || 
+                (SceneManager.GetActiveScene().name == "SkullRegistrationTREFeature"))
+                regInv = InverseT(regResult);
         }
 
         private void Save()
@@ -179,9 +200,9 @@ namespace AROF
 
             Vector3 currentDig = Digitize(reference);
 
-            pointCloudDig[currDigIndex % 7][0] = currentDig.x;
-            pointCloudDig[currDigIndex % 7][1] = currentDig.y;
-            pointCloudDig[currDigIndex % 7][2] = currentDig.z;
+            pointCloudDig[currDigIndex][0] = currentDig.x;
+            pointCloudDig[currDigIndex][1] = currentDig.y;
+            pointCloudDig[currDigIndex][2] = currentDig.z;
             currDigIndex += 1;
             //Debug.Log("" + currentDig[0] + " " + currentDig[1] + " " + currentDig[2]);
             DataHandler.d.numOfFidCollected = currDigIndex;
@@ -211,13 +232,17 @@ namespace AROF
 
         public Tuple<float[][], float[]> Register(float[][] A, float[][] B)
         {
-            int n = 7;        // Length of Point Sets
+            int n;
+            if (SceneManager.GetActiveScene().name != "SkullRegistrationTRE")
+                n = 7;        // Length of Point Sets
+            else
+                n = 6;
 
             // Calculate centroids of S and M point sets
             float[] aCentroid = new float[3] { 0.0f, 0.0f, 0.0f };
             float[] bCentroid = new float[3] { 0.0f, 0.0f, 0.0f };
 
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < n; i++) {
                 aCentroid[0] += A[i][0];
                 aCentroid[1] += A[i][1];
                 aCentroid[2] += A[i][2];
@@ -471,6 +496,30 @@ namespace AROF
             return Tuple.Create(U, S, V);
         }
 
+        public Tuple<float[][], float[]> InverseT(Tuple<float[][], float[]> A)
+        {
+            float[][] RInv = Transp(A.Item1);
+            float[] p = A.Item2;
+            float[] pInv = new float[3] { 0.0f, 0.0f, 0.0f };
+            pInv[0] = -(RInv[0][0] * p[0] + RInv[0][1] * p[1] + RInv[0][2] * p[2]);
+            pInv[1] = -(RInv[1][0] * p[0] + RInv[1][1] * p[1] + RInv[1][2] * p[2]);
+            pInv[2] = -(RInv[2][0] * p[0] + RInv[2][1] * p[1] + RInv[2][2] * p[2]);
+            return Tuple.Create(RInv, pInv);
+        }
+
+        public float[] TMultP(Tuple<float[][], float[]> A, float[] p)
+        {
+            float[] res = new float[3] { 0.0f, 0.0f, 0.0f };
+            res[0] = A.Item1[0][0] * p[0] + A.Item1[0][1] * p[1] + A.Item1[0][2] * p[2];
+            res[1] = A.Item1[1][0] * p[0] + A.Item1[1][1] * p[1] + A.Item1[1][2] * p[2];
+            res[2] = A.Item1[2][0] * p[0] + A.Item1[2][1] * p[1] + A.Item1[2][2] * p[2];
+            for(int i = 0; i < 3; i++)
+            {
+                res[i] += A.Item2[i];
+            }
+            return res;
+        }
+
         public void SaveRegisterDataToHandler()
         {
             DataHandler.d.regResult = regResult;
@@ -493,7 +542,20 @@ namespace AROF
         // Update is called once per frame
         void Update()
         {
-
+            if ((SceneManager.GetActiveScene().name == "SkullRegistrationTRE") || (SceneManager.GetActiveScene().name == "SkullRegistrationTREFeature"))
+            {
+                if (DataHandler.d.isRegistered == true)
+                {
+                    GameObject reference = GameObject.FindWithTag("markerSkull");
+                    Vector3 currentDig = Digitize(reference);
+                    float[] pointerTipPosWRTModelOrigin = TMultP(regInv, new float[3] {currentDig.x, currentDig.y, currentDig.z }); 
+                    DataHandler.d.pointerTipErr = new Vector3(
+                        pointerTipPosWRTModelOrigin[0] - targetTREpoint[0],
+                        pointerTipPosWRTModelOrigin[1] - targetTREpoint[1],
+                        pointerTipPosWRTModelOrigin[2] - targetTREpoint[2]
+                    );
+                }
+            }
         }
     }
 
