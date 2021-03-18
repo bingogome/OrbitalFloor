@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/AROrbitalFloor/Scenes/Navigation/FeaturePointsNav.unity
     guid: ffcfa3339de94c945882d72819d7b9c7
+  - enabled: 1
+    path: Assets/AROrbitalFloor/Scenes/Calibration/SkullRegistrationTRE.unity
+    guid: f8864ce4d55787444ab9d788476f7d89
   m_configObjects: {}

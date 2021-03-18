@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
 using UnityEngine.SceneManagement;
+using System.Text;
 
 namespace AROF
 {
@@ -21,6 +23,9 @@ namespace AROF
         private float[] pointFeaturePlanned;
         private float[][] pointFeaturesPlanned = new float[3][];
         private float[] targetTREpoint;
+
+        public List<Matrix4x4> pivotData = new List<Matrix4x4>();
+        private int pivCalCounter = 0;
 
         Tuple<float[][], float[]> regResult;
         Tuple<float[][], float[]> regInv;
@@ -41,6 +46,9 @@ namespace AROF
             keywordActions.Add("save", Save);
             keywordActions.Add("single", SinglePoint);
             keywordActions.Add("multiple", MultiplePoint);
+            keywordActions.Add("pivot", PivotCal);
+            keywordActions.Add("stop", StopPivotCal);
+            keywordActions.Add("error", TREScene);
 
             keywordRecognizer = new KeywordRecognizer(keywordActions.Keys.ToArray());
             keywordRecognizer.OnPhraseRecognized += OnKeywordsRecognized;
@@ -89,6 +97,11 @@ namespace AROF
             keywordActions[args.text].Invoke();
         }
 
+        private void TREScene()
+        {
+            SceneManager.LoadScene("SkullRegistrationTRE");
+        }
+
         private void SinglePoint()
         {
             SceneManager.LoadScene("SinglePointNav");
@@ -97,6 +110,17 @@ namespace AROF
         private void MultiplePoint()
         {
             SceneManager.LoadScene("FeaturePointsNav");
+        }
+
+        private void PivotCal()
+        {
+            DataHandler.d.startPivotCal = true;
+        }
+
+        private void StopPivotCal()
+        {
+            DataHandler.d.startPivotCal = false;
+            DataHandler.d.pointerPivCal = PivCalResult();
         }
 
         private void Digitize()
@@ -138,11 +162,41 @@ namespace AROF
             //Debug.Log("" + regResult.Item1[2][0] + " " + regResult.Item1[2][1] + " " + regResult.Item1[2][2]);
             //Debug.Log("" + regResult.Item2[0] + " " + regResult.Item2[1] + " " + regResult.Item2[2]);
             SaveRegisterDataToHandler();
+
+
             DataHandler.d.isRegistered = true;
             if ((SceneManager.GetActiveScene().name == "SkullRegistrationTRE") || 
                 (SceneManager.GetActiveScene().name == "SkullRegistrationTREFeature"))
                 regInv = InverseT(regResult);
+
+            Vector3[] residualReg = new Vector3[A.Length];
+            Matrix4x4 regMat = Matrix4x4.TRS(new Vector3(regResult.Item2[0], regResult.Item2[1], regResult.Item2[2]), RMat2Quat(regResult.Item1) ,new Vector3(1,1,1));
+            Vector3 regPVec = new Vector3(regResult.Item2[0], regResult.Item2[1], regResult.Item2[2]);
+            for (int i = 0; i < A.Length; i++)
+            {
+                Vector3 a = new Vector3( A[i][0], A[i][1], A[i][2]);
+                Vector3 b = new Vector3(B[i][0], B[i][1], B[i][2]);
+                residualReg[i] = b - (regMat.MultiplyVector(a) + regPVec);
+            }
+            DataHandler.d.residualReg = residualReg;
+
         }
+
+        public void WriteString(string s, string filename)
+        {
+            
+            
+            using (var file = new FileStream(Path.Combine(Application.persistentDataPath, filename), FileMode.Create, FileAccess.Write, FileShare.Write))
+            {
+                using (var writer = new StreamWriter(file, Encoding.UTF8))
+                {
+                    writer.Write(s);
+                }
+            }
+
+
+        }
+
 
         private void Save()
         {
@@ -151,16 +205,96 @@ namespace AROF
                 SaveRegisterDataToHandler();
                 //Debug.Log("Registration Saved");
                 DataHandler.d.isSavedReg = true;
+                
+                string regString = "data: ";
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        regString = regString + regResult.Item1[i][j].ToString("F6") + ", ";
+                    }
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    regString = regString + regResult.Item2[i].ToString("F6") + ", ";
+                }
+                regString = regString + "\n" + DataHandler.d.residualReg.Length.ToString() + " test \n";
+                for(int i = 0; i < DataHandler.d.residualReg.Length;i++)
+                {
+                    regString = regString + DataHandler.d.residualReg[i].x.ToString("F6") + ", ";
+                    regString = regString + DataHandler.d.residualReg[i].y.ToString("F6") + ", ";
+                    regString = regString + DataHandler.d.residualReg[i].z.ToString("F6") + ", ";
+                    regString = regString + "\n";
+                }
+
+                WriteString(regString, "reg" + DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss") + ".txt");
+                
             }
             else if (SceneManager.GetActiveScene().name == "SinglePointNav")
             {
                 SaveFeatureDataToHandler();
                 //Debug.Log("Single feature point Saved");
+                
+                string featureString = "data: ";
+                for (int i = 0; i < 3; i++)
+                {
+                    featureString = featureString + pointFeature[i].ToString("F6") + ", ";
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    featureString = featureString + pointFeaturePlanned[i].ToString("F6") + ", ";
+                }
+                WriteString(featureString, "implantfeature" + DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss") + ".txt");
             }
             else if (SceneManager.GetActiveScene().name == "FeaturePointsNav")
             {
                 SaveFeaturesDataToHandler();
                 //Debug.Log("Feature points Saved");
+                
+                string featuresString = "data: ";
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        featuresString = featuresString + pointFeaturesPlanned[i][j].ToString("F6") + ", ";
+                    }
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        featuresString = featuresString + pointFeaturesPlanned[i][j].ToString("F6") + ", ";
+                    }
+                }
+                WriteString(featuresString, "implantfeatures" + DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss") + ".txt");
+            }
+            else if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE")
+            {
+                string regString = "data: ";
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        regString = regString + regResult.Item1[i][j].ToString("F6") + ", ";
+                    }
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    regString = regString + regResult.Item2[i].ToString("F6") + ", ";
+                }
+                regString = regString + DataHandler.d.pointerTipErr.x.ToString("F6") + ", ";
+                regString = regString + DataHandler.d.pointerTipErr.y.ToString("F6") + ", ";
+                regString = regString + DataHandler.d.pointerTipErr.z.ToString("F6") + ", ";
+                regString = regString + "\n" + DataHandler.d.residualReg.Length.ToString() + " test \n";
+                for (int i = 0; i < DataHandler.d.residualReg.Length; i++)
+                {
+                    regString = regString + DataHandler.d.residualReg[i].x.ToString("F6") + ", ";
+                    regString = regString + DataHandler.d.residualReg[i].y.ToString("F6") + ", ";
+                    regString = regString + DataHandler.d.residualReg[i].z.ToString("F6") + ", ";
+                    regString = regString + "\n";
+                }
+
+                WriteString(regString, "TRE" + DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss") + ".txt");
             }
         }
 
@@ -228,6 +362,15 @@ namespace AROF
             currDigIndex += 1;
             //Debug.Log("" + currentDig[0] + " " + currentDig[1] + " " + currentDig[2]);
 
+        }
+
+        public Quaternion RMat2Quat(float[][] RMat)
+        {
+            Vector3 column3;
+            Vector3 column2;
+            column3 = new Vector3(RMat[0][2], RMat[1][2], RMat[2][2]);
+            column2 = new Vector3(RMat[0][1], RMat[1][1], RMat[2][1]);
+            return Quaternion.LookRotation(column3, column2);
         }
 
         public Tuple<float[][], float[]> Register(float[][] A, float[][] B)
@@ -539,6 +682,28 @@ namespace AROF
             DataHandler.d.pointFeaturesPlanned = pointFeaturesPlanned;
         }
         
+        public float[] PivCalResult()
+        {
+            float[] result = new float[3] {0.0f, 0.0f, 0.0f };
+            int n = pivotData.Count;
+            float[][] RImatrix = new float[n*3][];
+            float[] tMatrix = new float[n * 3];
+            for (int i = 0; i < n; i++)
+            {
+                RImatrix[i * 3    ] = new float[6] { pivotData[i][0, 0], pivotData[i][0, 1], pivotData[i][0, 2], -1.0f, 0.0f, 0.0f};
+                RImatrix[i * 3 + 1] = new float[6] { pivotData[i][1, 0], pivotData[i][1, 1], pivotData[i][1, 2], 0.0f, -1.0f, 0.0f };
+                RImatrix[i * 3 + 2] = new float[6] { pivotData[i][2, 0], pivotData[i][2, 1], pivotData[i][2, 2], 0.0f, 0.0f, -1.0f };
+
+                tMatrix[i * 3] = -pivotData[i][0, 3];
+                tMatrix[i * 3] = -pivotData[i][1, 3];
+                tMatrix[i * 3] = -pivotData[i][2, 3];
+            }
+            
+
+
+            return result;
+        }
+
         // Update is called once per frame
         void Update()
         {
@@ -555,6 +720,12 @@ namespace AROF
                         pointerTipPosWRTModelOrigin[2] - targetTREpoint[2]
                     );
                 }
+            }
+            if (DataHandler.d.startPivotCal)
+            {
+                pivCalCounter++;
+                if(pivCalCounter% 50==0)
+                    pivotData.Add(Matrix4x4.TRS(transform.localPosition, transform.localRotation, Vector3.one));
             }
         }
     }

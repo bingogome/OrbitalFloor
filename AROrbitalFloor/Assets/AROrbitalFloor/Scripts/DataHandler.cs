@@ -25,7 +25,11 @@ namespace AROF
         public bool isDigedFeature = false;
         public bool isDigedFeatures = false;
         public bool startNavigate = false;
+        public bool startPivotCal = false;
         public int numOfFeatCollected=0;
+        public float[] pointerPivCal;
+
+        public Vector3[] residualReg;
 
         public Vector3 finalPos;
 

@@ -26,13 +26,13 @@ namespace AROF
             if (DataHandler.d.startNavigate)
             {
                 Vector3 diffPoseEuler = DataHandler.d.diffPoseR.eulerAngles;
-                txt.text = "Distances to target along axes: (mm)\nx "
-                    + (1000.0f * DataHandler.d.finalPos.x).ToString("F2") + ", y "
-                    + (1000.0f * DataHandler.d.finalPos.y).ToString("F2") + ", z "
+                txt.text = "Distances to target along axes: (mm)\nTransverse "
+                    + (1000.0f * DataHandler.d.finalPos.x).ToString("F2") + ", Sagittal "
+                    + (1000.0f * DataHandler.d.finalPos.y).ToString("F2") + ", Coronal "
                     + (1000.0f * DataHandler.d.finalPos.z).ToString("F2") + "\nOrientation to target: (degrees in Euler angles)\n" +
-                    "x: " + diffPoseEuler.x.ToString("F2") + "\n" +
-                    "y: " + diffPoseEuler.y.ToString("F2") + "\n" +
-                    "z: " + diffPoseEuler.z.ToString("F2") + "\n" +
+                    "Transverse: " + diffPoseEuler.x.ToString("F2") + "\n" +
+                    "Sagittal: " + diffPoseEuler.y.ToString("F2") + "\n" +
+                    "Coronal: " + diffPoseEuler.z.ToString("F2") + "\n" +
                     "Distance to target: (mm) " + (1000.0f * Mathf.Sqrt( 
                     DataHandler.d.finalPos.x * DataHandler.d.finalPos.x +
                     DataHandler.d.finalPos.y * DataHandler.d.finalPos.y +

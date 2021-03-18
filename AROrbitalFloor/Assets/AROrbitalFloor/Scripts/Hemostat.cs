@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
 using UnityEngine.SceneManagement;
+using System.Text;
 
 
 namespace AROF
@@ -41,6 +43,7 @@ namespace AROF
             regResult = DataHandler.d.regResult;
 
             keywordActions.Add("navigate", Navigate);
+            keywordActions.Add("error", Error);
             keywordRecognizer = new KeywordRecognizer(keywordActions.Keys.ToArray());
             keywordRecognizer.OnPhraseRecognized += OnKeywordsRecognized;
             keywordRecognizer.Start();
@@ -130,6 +133,27 @@ namespace AROF
             features[0].transform.localPosition = regR * featurePlannedPos + regP;
 
         }
+
+        private void Error()
+        {            
+            string errorString = " ";
+            errorString = errorString + DataHandler.d.finalPos.x.ToString("F6") + ", ".ToString();
+            errorString = errorString + DataHandler.d.finalPos.y.ToString("F6") + ", ".ToString();
+            errorString = errorString + DataHandler.d.finalPos.z.ToString("F6") + ", ".ToString();
+            WriteString(errorString, "error" + DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss") + ".txt".ToString());
+        }
+
+        public void WriteString(string s, string filename)
+        {
+            using (var file = new FileStream(Path.Combine(Application.persistentDataPath, filename), FileMode.Create, FileAccess.Write, FileShare.Write))
+            {
+                using (var writer = new StreamWriter(file, Encoding.UTF8))
+                {
+                    writer.Write(s);
+                }
+            }
+        }
+
 
         public Tuple<float[][], float[]> Register(float[][] A, float[][] B)
         {
@@ -493,11 +517,13 @@ namespace AROF
                     Vector3 S_p_d = S_R_H * H_p_d + S_p_H;
 
                     Vector3 finalPos = (regR * featurePlannedPos + regP) - S_p_d;
+                    finalPos = Quaternion.Inverse(regR) * (finalPos);
                     DataHandler.d.finalPos = finalPos;
                     finalPos.x = DistanceMapping(finalPos.x);
                     finalPos.y = DistanceMapping(finalPos.y);
                     finalPos.z = DistanceMapping(finalPos.z);
                     alignIndicator.transform.localPosition = finalPos;
+
                 }
                 else
                 {
@@ -533,6 +559,7 @@ namespace AROF
                     diffAve.y = diffAve.y / features.Length;
                     diffAve.z = diffAve.z / features.Length;
                     Vector3 finalPos = diffAve;
+                    finalPos = Quaternion.Inverse(regR) * (finalPos);
                     DataHandler.d.finalPos = finalPos;
                     finalPos.x = DistanceMapping(diffAve.x);
                     finalPos.y = DistanceMapping(diffAve.y);
@@ -554,12 +581,22 @@ namespace AROF
                     }
 
                     // get orientation difference
-                    Tuple<float[][], float[]> diffPose = Register(S_p_dFloat, featurePlannedPosFloat);
-                    Quaternion diffPoseR = RMat2Quat(diffPose.Item1);
-                    DataHandler.d.diffPoseR = diffPoseR;
+                    // Tuple<float[][], float[]> diffPose = Register(S_p_dFloat, featurePlannedPosFloat); // unstable
+                    // Quaternion diffPoseR = RMat2Quat(diffPose.Item1);
+                    
 
                     float[] normVec1 = NormalTo3Points(S_p_dFloat[0], S_p_dFloat[1], S_p_dFloat[2]);
                     float[] normVec2 = NormalTo3Points(featurePlannedPosFloat[0], featurePlannedPosFloat[1], featurePlannedPosFloat[2]);
+
+                    if (normVec1[0] * normVec2[0] + normVec1[1] * normVec2[1] + normVec1[2] * normVec2[2] < 0.0f) // check if general direction aligns
+                        normVec2 = new float[3] { -normVec2[0], -normVec2[1], -normVec2[2] };
+
+                    Vector3 normVec1_ = new Vector3(normVec1[0], normVec1[1], normVec1[2]);
+                    Vector3 normVec2_ = new Vector3(normVec2[0], normVec2[1], normVec2[2]);
+                    Quaternion diffPoseR = Quaternion.FromToRotation(normVec2_, normVec1_);
+
+                    diffPoseR = Quaternion.Inverse(regR) * diffPoseR;
+                    DataHandler.d.diffPoseR = diffPoseR;
 
                     alignIndicator.transform.localRotation = diffPoseR;
 

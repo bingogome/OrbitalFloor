@@ -26,9 +26,9 @@ namespace AROF
             }
             if (DataHandler.d.startNavigate)
             {
-                txt.text = "Distances to target along axes: (mm)\nx " 
-                    + (1000.0f * DataHandler.d.finalPos.x).ToString("F2") + "\ny "
-                    + (1000.0f * DataHandler.d.finalPos.y).ToString("F2") + "\nz "
+                txt.text = "Distances to target along axes: (mm)\nTransverse " 
+                    + (1000.0f * DataHandler.d.finalPos.x).ToString("F2") + "\nSagittal "
+                    + (1000.0f * DataHandler.d.finalPos.y).ToString("F2") + "\nCoronal "
                     + (1000.0f * DataHandler.d.finalPos.z).ToString("F2") + "\n" +
                     "Distance to target: (mm) " + (1000.0f * Mathf.Sqrt(
                     DataHandler.d.finalPos.x * DataHandler.d.finalPos.x +

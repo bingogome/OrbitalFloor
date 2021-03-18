@@ -506,6 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee00640b4af9db46bf0ed259a98bdc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pivotData: []
 --- !u!43 &1009779047
 Mesh:
   m_ObjectHideFlags: 0
@@ -1541,15 +1542,16 @@ MonoBehaviour:
   pointFeature: []
   pointFeaturePlanned: []
   diffPoseR: {x: 0, y: 0, z: 0, w: 0}
-  pointerTipPos: {x: 0, y: 0, z: 0}
-  pointerTipErr: 0
+  pointerTipErr: {x: 0, y: 0, z: 0}
   numOfFidCollected: 0
   isRegistered: 0
   isSavedReg: 0
   isDigedFeature: 0
   isDigedFeatures: 0
   startNavigate: 0
+  startPivotCal: 0
   numOfFeatCollected: 0
+  pointerPivCal: []
   finalPos: {x: 0, y: 0, z: 0}
 --- !u!1 &2069553260
 GameObject:
@@ -1661,7 +1663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -30, y: 30, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.09, y: 0.053}
+  m_AnchoredPosition: {x: 0.06, y: 0.02}
   m_SizeDelta: {x: 200, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2120163175
