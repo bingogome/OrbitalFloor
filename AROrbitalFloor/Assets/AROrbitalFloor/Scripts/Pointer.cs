@@ -17,6 +17,7 @@ namespace AROF
 
         private float[][] pointCloudDig = new float[7][];
         private float[][] pointCloudModel = new float[7][];
+        private float[][] pointCloudModel_ = new float[7][];
         private float[] pointFeature;
         private float[][] pointFeatures = new float[3][];
 
@@ -26,6 +27,7 @@ namespace AROF
 
         public List<Matrix4x4> pivotData = new List<Matrix4x4>();
         private int pivCalCounter = 0;
+        private int fidNumTRE = 0;
 
         Tuple<float[][], float[]> regResult;
         Tuple<float[][], float[]> regInv;
@@ -48,20 +50,36 @@ namespace AROF
             keywordActions.Add("multiple", MultiplePoint);
             keywordActions.Add("pivot", PivotCal);
             keywordActions.Add("stop", StopPivotCal);
-            keywordActions.Add("error", TREScene);
+            keywordActions.Add("error 1", TREScene1);
+            keywordActions.Add("error 2", TREScene2);
+            keywordActions.Add("clear", ClearDig);
+            keywordActions.Add("back", BackToReg);
+
+            if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE" || SceneManager.GetActiveScene().name == "SkullRegistrationTREFeature")
+            {
+                keywordActions.Add("one", One);
+                keywordActions.Add("two", Two);
+                keywordActions.Add("three", Three);
+                keywordActions.Add("four", Four);
+                keywordActions.Add("five", Five);
+                keywordActions.Add("six", Six);
+                keywordActions.Add("seven", Seven);
+            }
 
             keywordRecognizer = new KeywordRecognizer(keywordActions.Keys.ToArray());
             keywordRecognizer.OnPhraseRecognized += OnKeywordsRecognized;
             keywordRecognizer.Start();
 
-            pointCloudModel[0] = new float[] { 62.2834f / 1000.0f, -101.639f / 1000.0f, 137.095f / 1000.0f };
-            pointCloudModel[1] = new float[] { 71.8019f / 1000.0f, -134.585f / 1000.0f, 176.091f / 1000.0f };
-            pointCloudModel[2] = new float[] { 1.41721f / 1000.0f, -44.5984f / 1000.0f, 153.749f / 1000.0f };
-            pointCloudModel[3] = new float[] { 1.14525f / 1000.0f, -60.4037f / 1000.0f, 191.706f / 1000.0f };
-            pointCloudModel[4] = new float[] { 1.32943f / 1000.0f, -175.998f / 1000.0f, 211.543f / 1000.0f };
-            pointCloudModel[5] = new float[] { -59.9893f / 1000.0f, -109.185f / 1000.0f, 171.305f / 1000.0f };
+            pointCloudModel_[0] = new float[] { 62.2834f / 1000.0f, -101.639f / 1000.0f, 137.095f / 1000.0f };
+            pointCloudModel_[1] = new float[] { 71.8019f / 1000.0f, -134.585f / 1000.0f, 176.091f / 1000.0f };
+            pointCloudModel_[2] = new float[] { 1.41721f / 1000.0f, -44.5984f / 1000.0f, 153.749f / 1000.0f };
+            pointCloudModel_[3] = new float[] { 1.14525f / 1000.0f, -60.4037f / 1000.0f, 191.706f / 1000.0f };
+            pointCloudModel_[4] = new float[] { 1.32943f / 1000.0f, -175.998f / 1000.0f, 211.543f / 1000.0f };
+            pointCloudModel_[5] = new float[] { -59.9893f / 1000.0f, -109.185f / 1000.0f, 171.305f / 1000.0f };
+            pointCloudModel_[6] = new float[] { -53.9599f / 1000.0f, -117.288f / 1000.0f, 120.412f / 1000.0f };
+
             if (SceneManager.GetActiveScene().name != "SkullRegistrationTRE")
-                pointCloudModel[6] = new float[] { -53.9599f / 1000.0f, -117.288f / 1000.0f, 120.412f / 1000.0f };
+                pointCloudModel = pointCloudModel_;
 
             pointFeaturePlanned = new float[] { 29.281f / 1000.0f, -77.8222f / 1000.0f, 114.428f / 1000.0f };
             pointFeaturesPlanned[0] = new float[] { 20.4428f / 1000.0f, -89.0086f / 1000.0f, 120.142f / 1000.0f };
@@ -76,11 +94,6 @@ namespace AROF
                 pointCloudDig = GetZero(6);
             pointFeatures = GetZero(3);
 
-            if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE")
-                targetTREpoint = new float[] { -53.9599f / 1000.0f, -117.288f / 1000.0f, 120.412f / 1000.0f };
-            else
-                targetTREpoint = new float[] { 28.8796f / 1000.0f, -81.6048f / 1000.0f, 115.405f / 1000.0f };
-
             // test svd
             //float[][] A = GetZero();
             //A[0][0] = 3.3f; A[0][1] = 4.2f; A[0][2] = 1f;
@@ -92,14 +105,182 @@ namespace AROF
 
         }
 
+        private void ClearDig()
+        {
+            if (SceneManager.GetActiveScene().name == "SkullRegistration")
+            {
+                currDigIndex = 0;
+                DataHandler.d.isRegistered = false;
+                DataHandler.d.isSavedReg = false;
+                DataHandler.d.numOfFidCollected = 0;
+            }
+            if (SceneManager.GetActiveScene().name == "SinglePointNav")
+            {
+                DataHandler.d.pointFeature = null;
+                DataHandler.d.isDigedFeature = false;
+                DataHandler.d.startNavigate = false;
+            }
+
+
+        }
+
+        private void BackToReg()
+        {
+            ClearDig();
+            DataHandler.d.isDigedFeature = false;
+            DataHandler.d.isDigedFeatures = false;
+            DataHandler.d.startNavigate = false;
+            DataHandler.d.numOfFeatCollected = 0;
+            SceneManager.LoadScene("SkullRegistration");
+        }
+
+        private void One()
+        {
+            if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE")
+            {
+                int j = 0;
+                for(int i=0; i<7; i++)
+                {
+                    if (i == 0) { continue; }
+                    else
+                    {
+                        pointCloudModel[j] = pointCloudModel_[i];
+                        j++;
+                    }
+                }
+            }
+            targetTREpoint = new float[] { 62.2834f / 1000.0f, -101.639f / 1000.0f, 137.095f / 1000.0f };
+            fidNumTRE = 1;
+
+        }
+
+        private void Two()
+        {
+            if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE")
+            {
+                int j = 0;
+                for (int i = 0; i < 7; i++)
+                {
+                    if (i == 1) { continue; }
+                    else
+                    {
+                        pointCloudModel[j] = pointCloudModel_[i];
+                        j++;
+                    }
+                }
+            }
+            targetTREpoint = new float[] { 71.8019f / 1000.0f, -134.585f / 1000.0f, 176.091f / 1000.0f };
+            fidNumTRE = 2;
+        }
+
+        private void Three()
+        {
+            if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE")
+            {
+                int j = 0;
+                for (int i = 0; i < 7; i++)
+                {
+                    if (i == 2) { continue; }
+                    else
+                    {
+                        pointCloudModel[j] = pointCloudModel_[i];
+                        j++;
+                    }
+                }
+            }
+            targetTREpoint = new float[] { 1.41721f / 1000.0f, -44.5984f / 1000.0f, 153.749f / 1000.0f };
+            fidNumTRE = 3;
+        }
+
+        private void Four()
+        {
+            if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE")
+            {
+                int j = 0;
+                for (int i = 0; i < 7; i++)
+                {
+                    if (i == 3) { continue; }
+                    else
+                    {
+                        pointCloudModel[j] = pointCloudModel_[i];
+                        j++;
+                    }
+                }
+            }
+            targetTREpoint = new float[] { 1.14525f / 1000.0f, -60.4037f / 1000.0f, 191.706f / 1000.0f };
+            fidNumTRE = 4;
+        }
+
+        private void Five()
+        {
+            if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE")
+            {
+                int j = 0;
+                for (int i = 0; i < 7; i++)
+                {
+                    if (i == 4) { continue; }
+                    else
+                    {
+                        pointCloudModel[j] = pointCloudModel_[i];
+                        j++;
+                    }
+                }
+            }
+            targetTREpoint = new float[] { 1.32943f / 1000.0f, -175.998f / 1000.0f, 211.543f / 1000.0f };
+            fidNumTRE = 5;
+        }
+
+        private void Six()
+        {
+            if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE")
+            {
+                int j = 0;
+                for (int i = 0; i < 7; i++)
+                {
+                    if (i == 5) { continue; }
+                    else
+                    {
+                        pointCloudModel[j] = pointCloudModel_[i];
+                        j++;
+                    }
+                }
+            }
+            targetTREpoint = new float[] { -59.9893f / 1000.0f, -109.185f / 1000.0f, 171.305f / 1000.0f };
+            fidNumTRE = 6;
+        }
+
+        private void Seven()
+        {
+            if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE")
+            {
+                int j = 0;
+                for (int i = 0; i < 7; i++)
+                {
+                    if (i == 6) { continue; }
+                    else
+                    {
+                        pointCloudModel[j] = pointCloudModel_[i];
+                        j++;
+                    }
+                }
+            }
+            targetTREpoint = new float[] { -53.9599f / 1000.0f, -117.288f / 1000.0f, 120.412f / 1000.0f };
+            fidNumTRE = 7;
+        }
+
         private void OnKeywordsRecognized(PhraseRecognizedEventArgs args)
         {
             keywordActions[args.text].Invoke();
         }
 
-        private void TREScene()
+        private void TREScene1()
         {
             SceneManager.LoadScene("SkullRegistrationTRE");
+        }
+
+        private void TREScene2()
+        {
+            SceneManager.LoadScene("SkullRegistrationTREFeature");
         }
 
         private void SinglePoint()
@@ -268,7 +449,7 @@ namespace AROF
                 }
                 WriteString(featuresString, "implantfeatures" + DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss") + ".txt");
             }
-            else if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE")
+            else if (SceneManager.GetActiveScene().name == "SkullRegistrationTRE" || (SceneManager.GetActiveScene().name == "SkullRegistrationTREFeature"))
             {
                 string regString = "data: ";
                 for (int i = 0; i < 3; i++)
@@ -293,6 +474,7 @@ namespace AROF
                     regString = regString + DataHandler.d.residualReg[i].z.ToString("F6") + ", ";
                     regString = regString + "\n";
                 }
+                regString = regString + fidNumTRE.ToString();
 
                 WriteString(regString, "TRE" + DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss") + ".txt");
             }

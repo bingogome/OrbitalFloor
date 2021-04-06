@@ -24,7 +24,7 @@ namespace AROF
                 txt.text = "Digitized.\nSay \"Navigate!\" to start the navigation.";
                 
             }
-            if (DataHandler.d.startNavigate)
+            else if (DataHandler.d.startNavigate)
             {
                 txt.text = "Distances to target along axes: (mm)\nTransverse " 
                     + (1000.0f * DataHandler.d.finalPos.x).ToString("F2") + "\nSagittal "
@@ -35,6 +35,10 @@ namespace AROF
                     DataHandler.d.finalPos.y * DataHandler.d.finalPos.y +
                     DataHandler.d.finalPos.z * DataHandler.d.finalPos.z
                     )).ToString("F2");
+            }
+            else
+            {
+                txt.text = "Say \"Digitize!\" to collect a point on the implant.";
             }
 
         }

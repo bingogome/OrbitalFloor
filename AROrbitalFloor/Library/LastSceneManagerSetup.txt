@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/AROrbitalFloor/Scenes/Navigation/SinglePointNav.unity
+- path: Assets/AROrbitalFloor/Scenes/Calibration/SkullRegistrationTREFeature.unity
   isLoaded: 1
   isActive: 1

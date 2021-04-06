@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/AROrbitalFloor/Scenes/Calibration/SkullRegistrationTRE.unity
     guid: f8864ce4d55787444ab9d788476f7d89
+  - enabled: 1
+    path: Assets/AROrbitalFloor/Scenes/Calibration/SkullRegistrationTREFeature.unity
+    guid: f076a21e1d46c5547880b12ec323c6ec
   m_configObjects: {}
